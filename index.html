@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Django Full-Stack Python Step-by-Step Learning Guide with VS Code IDE Theme and One-Click Clipboard Copying">
+    <title>Django Full-Stack Guide - Visual Studio Code</title>
+    <!-- Google Fonts for VS Code aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="vscode-theme">
+    <!-- Top Titlebar -->
+    <header class="titlebar" id="titlebar">
+        <div class="titlebar-left">
+            <span class="app-icon">
+                <svg width="18" height="18" viewBox="0 0 100 100" fill="none">
+                    <path d="M72.2 97.4L98 84.8C99.2 84.2 100 83 100 81.6V18.4C100 17 99.2 15.8 98 15.2L72.2 2.6C70.6 1.8 68.6 2.3 67.5 3.7L33.7 34.6L12.5 18.5C11.5 17.7 10.1 17.7 9.1 18.3L1.5 22.8C0.6 23.4 0 24.4 0 25.5C0 26.6 0.6 27.6 1.5 28.2L20.8 42.8L1.5 57.5C0.6 58.1 0 59.1 0 60.2C0 61.3 0.6 62.3 1.5 62.9L9.1 67.4C10.1 68 11.5 68 12.5 67.2L33.7 51.1L67.5 82C68.6 83.4 70.6 83.9 72.2 83.1V97.4Z" fill="#007ACC"/>
+                    <path d="M72.2 2.6L33.7 34.6L67.5 3.7C68.6 2.3 70.6 1.8 72.2 2.6Z" fill="#1F9CF0"/>
+                    <path d="M72.2 97.4V83.1C70.6 83.9 68.6 83.4 67.5 82L33.7 51.1L72.2 97.4Z" fill="#0065A9"/>
+                </svg>
+            </span>
+            <nav class="window-menu">
+                <span class="menu-item">File</span>
+                <span class="menu-item">Edit</span>
+                <span class="menu-item">Selection</span>
+                <span class="menu-item">View</span>
+                <span class="menu-item">Go</span>
+                <span class="menu-item">Run</span>
+                <span class="menu-item">Terminal</span>
+                <span class="menu-item">Help</span>
+            </nav>
+        </div>
+
+        <div class="titlebar-center">
+            <div class="search-command-palette" id="quickOpenBtn" title="Quick Open (Ctrl+P / Click to search steps)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <span class="palette-text">django_project — Full-Stack Python Guide (Step 1 to 24)</span>
+            </div>
+        </div>
+
+        <div class="titlebar-right">
+            <button class="top-action-btn" id="copyFullGuideBtn" title="Copy entire guide content to clipboard">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copy Full Guide</span>
+            </button>
+            <div class="window-controls">
+                <span class="win-btn minimize" title="Minimize">─</span>
+                <span class="win-btn maximize" title="Maximize">□</span>
+                <span class="win-btn close" title="Close">✕</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main VS Code Workspace Layout -->
+    <div class="main-container">
+        <!-- Left Activity Bar -->
+        <aside class="activity-bar" aria-label="Activity Bar">
+            <div class="activity-top">
+                <button class="activity-icon active" id="act-explorer" data-panel="explorer" title="Explorer (Ctrl+Shift+E)">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                </button>
+                <button class="activity-icon" id="act-search" data-panel="search" title="Search Steps & Code (Ctrl+Shift+F)">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <button class="activity-icon" id="act-steps" data-panel="steps" title="Steps Outline (1 - 18)">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                </button>
+                <button class="activity-icon" id="act-git" data-panel="git" title="Source Control">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="18" cy="18" r="3"></circle>
+                        <circle cx="6" cy="6" r="3"></circle>
+                        <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+                        <line x1="6" y1="9" x2="6" y2="21"></line>
+                    </svg>
+                </button>
+                <button class="activity-icon" id="act-django" data-panel="django-docs" title="Django Architecture Flow">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </button>
+            </div>
+            <div class="activity-bottom">
+                <button class="activity-icon" id="act-copy-all" title="Copy Complete Guide to Clipboard">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+                <button class="activity-icon" id="act-settings" title="Settings">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Sidebar / Explorer Panel -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span class="sidebar-title" id="sidebarTitle">EXPLORER: DJANGO_PROJECT</span>
+                <div class="sidebar-actions">
+                    <button class="icon-btn" id="collapseAllBtn" title="Collapse All">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="4 14 10 14 10 20"></polyline>
+                            <polyline points="20 10 14 10 14 4"></polyline>
+                        </svg>
+                    </button>
+                    <button class="icon-btn" id="copyAllSidebarBtn" title="Copy Full Guide">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search input bar inside sidebar -->
+            <div class="sidebar-search-box" id="sidebarSearchContainer">
+                <input type="text" id="stepSearchInput" placeholder="Filter steps, models, views..." />
+                <button class="clear-search-btn" id="clearSearchBtn">✕</button>
+            </div>
+
+            <!-- Panel 1: File Tree & Project Structure -->
+            <div class="sidebar-content" id="panelExplorer">
+                <!-- Section 1: Guide Document -->
+                <div class="tree-group">
+                    <div class="tree-group-header" data-toggle="guide-group">
+                        <span class="chevron">▼</span>
+                        <span class="group-name">DOCUMENTATION</span>
+                    </div>
+                    <div class="tree-children" id="guide-group">
+                        <div class="tree-item active" data-file="guide" data-name="Django_Guide.md">
+                            <span class="file-icon md-icon">M↓</span>
+                            <span class="file-name">Django_Guide.md</span>
+                            <span class="badge">Steps 1 - 24</span>
+                        </div>
+                        <div class="tree-item" data-file="flow" data-name="Architecture_Flow.txt">
+                            <span class="file-icon txt-icon">⚙</span>
+                            <span class="file-name">Architecture_Flow.txt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Code Files (Interactive File Explorer) -->
+                <div class="tree-group">
+                    <div class="tree-group-header" data-toggle="project-group">
+                        <span class="chevron">▼</span>
+                        <span class="group-name">DJANGO_PROJECT [ROOT]</span>
+                    </div>
+                    <div class="tree-children" id="project-group">
+                        <!-- config folder -->
+                        <div class="tree-folder">
+                            <div class="folder-header" data-toggle="folder-config">
+                                <span class="chevron">▼</span>
+                                <span class="folder-icon">📁</span>
+                                <span class="folder-name">config</span>
+                            </div>
+                            <div class="folder-children" id="folder-config">
+                                <div class="tree-item" data-file="settings" data-name="config/settings.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">settings.py</span>
+                                    <span class="sub-badge">Step 5</span>
+                                </div>
+                                <div class="tree-item" data-file="config_urls" data-name="config/urls.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">urls.py</span>
+                                    <span class="sub-badge">Step 13</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- students app folder -->
+                        <div class="tree-folder">
+                            <div class="folder-header" data-toggle="folder-students">
+                                <span class="chevron">▼</span>
+                                <span class="folder-icon">📁</span>
+                                <span class="folder-name">students</span>
+                            </div>
+                            <div class="folder-children" id="folder-students">
+                                <div class="tree-item" data-file="models" data-name="students/models.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">models.py</span>
+                                    <span class="sub-badge">Step 6</span>
+                                </div>
+                                <div class="tree-item" data-file="admin" data-name="students/admin.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">admin.py</span>
+                                    <span class="sub-badge">Step 8</span>
+                                </div>
+                                <div class="tree-item" data-file="forms" data-name="students/forms.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">forms.py</span>
+                                    <span class="sub-badge">Step 10</span>
+                                </div>
+                                <div class="tree-item" data-file="views" data-name="students/views.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">views.py</span>
+                                    <span class="sub-badge">Step 11</span>
+                                </div>
+                                <div class="tree-item" data-file="student_urls" data-name="students/urls.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">urls.py</span>
+                                    <span class="sub-badge">Step 12</span>
+                                </div>
+
+                                <!-- templates folder -->
+                                <div class="tree-folder">
+                                    <div class="folder-header" data-toggle="folder-templates">
+                                        <span class="chevron">▼</span>
+                                        <span class="folder-icon">📁</span>
+                                        <span class="folder-name">templates/students</span>
+                                    </div>
+                                    <div class="folder-children" id="folder-templates">
+                                        <div class="tree-item" data-file="base_html" data-name="templates/students/base.html">
+                                            <span class="file-icon html-icon">&lt;&gt;</span>
+                                            <span class="file-name">base.html</span>
+                                            <span class="sub-badge">Step 15</span>
+                                        </div>
+                                        <div class="tree-item" data-file="list_html" data-name="templates/students/student_list.html">
+                                            <span class="file-icon html-icon">&lt;&gt;</span>
+                                            <span class="file-name">student_list.html</span>
+                                            <span class="sub-badge">Step 16</span>
+                                        </div>
+                                        <div class="tree-item" data-file="form_html" data-name="templates/students/student_form.html">
+                                            <span class="file-icon html-icon">&lt;&gt;</span>
+                                            <span class="file-name">student_form.html</span>
+                                            <span class="sub-badge">Step 17</span>
+                                        </div>
+                                        <div class="tree-item" data-file="delete_html" data-name="templates/students/student_delete.html">
+                                            <span class="file-icon html-icon">&lt;&gt;</span>
+                                            <span class="file-name">student_delete.html</span>
+                                            <span class="sub-badge">Step 18</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- registration folder for auth -->
+                                <div class="tree-folder">
+                                    <div class="folder-header" data-toggle="folder-registration">
+                                        <span class="chevron">▼</span>
+                                        <span class="folder-icon">📁</span>
+                                        <span class="folder-name">templates/registration</span>
+                                    </div>
+                                    <div class="folder-children" id="folder-registration">
+                                        <div class="tree-item" data-file="login_html" data-name="templates/registration/login.html">
+                                            <span class="file-icon html-icon">&lt;&gt;</span>
+                                            <span class="file-name">login.html</span>
+                                            <span class="sub-badge">Step 21</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- root files -->
+                        <div class="tree-item" data-file="manage" data-name="manage.py">
+                            <span class="file-icon py-icon">🐍</span>
+                            <span class="file-name">manage.py</span>
+                        </div>
+                        <div class="tree-item" data-file="db" data-name="db.sqlite3">
+                            <span class="file-icon db-icon">🗄️</span>
+                            <span class="file-name">db.sqlite3</span>
+                            <span class="sub-badge">Step 7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Jump to Step List (Outline) -->
+                <div class="tree-group">
+                    <div class="tree-group-header" data-toggle="steps-outline">
+                        <span class="chevron">▼</span>
+                        <span class="group-name">TABLE OF STEPS (1 - 18)</span>
+                    </div>
+                    <div class="tree-children" id="steps-outline">
+                        <div class="step-nav-item" data-target="step-1"><span class="step-num">01</span> Setup Environment</div>
+                        <div class="step-nav-item" data-target="step-2"><span class="step-num">02</span> Create Django Project</div>
+                        <div class="step-nav-item" data-target="step-3"><span class="step-num">03</span> Understand Project Structure</div>
+                        <div class="step-nav-item" data-target="step-4"><span class="step-num">04</span> Create Students App</div>
+                        <div class="step-nav-item" data-target="step-5"><span class="step-num">05</span> Register App in Settings</div>
+                        <div class="step-nav-item" data-target="step-6"><span class="step-num">06</span> Create Student Model</div>
+                        <div class="step-nav-item" data-target="step-7"><span class="step-num">07</span> Make Migrations & DB</div>
+                        <div class="step-nav-item" data-target="step-8"><span class="step-num">08</span> Register in Admin</div>
+                        <div class="step-nav-item" data-target="step-9"><span class="step-num">09</span> Create Superuser & Run</div>
+                        <div class="step-nav-item" data-target="step-10"><span class="step-num">10</span> Create Forms (Shortcut)</div>
+                        <div class="step-nav-item" data-target="step-11"><span class="step-num">11</span> Create Generic Views</div>
+                        <div class="step-nav-item" data-target="step-12"><span class="step-num">12</span> Create App URLs</div>
+                        <div class="step-nav-item" data-target="step-13"><span class="step-num">13</span> Connect Project URLs</div>
+                        <div class="step-nav-item" data-target="step-14"><span class="step-num">14</span> Create Templates Folder</div>
+                        <div class="step-nav-item" data-target="step-15"><span class="step-num">15</span> Create base.html</div>
+                        <div class="step-nav-item" data-target="step-16"><span class="step-num">16</span> Student List View</div>
+                        <div class="step-nav-item" data-target="step-17"><span class="step-num">17</span> Student Form (Add/Edit)</div>
+                        <div class="step-nav-item" data-target="step-18"><span class="step-num">18</span> Delete Student View</div>
+                        <div class="step-nav-item" data-target="step-20"><span class="step-num">20</span> Add Login (auth.urls)</div>
+                        <div class="step-nav-item" data-target="step-21"><span class="step-num">21</span> Create Login Page</div>
+                        <div class="step-nav-item" data-target="step-22"><span class="step-num">22</span> Configure Login Settings</div>
+                        <div class="step-nav-item" data-target="step-24"><span class="step-num">24</span> Add Auth to Navbar</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Editor Zone -->
+        <main class="editor-area" id="editorArea">
+            <!-- Tabs Bar -->
+            <div class="editor-tabs-bar" id="editorTabs">
+                <div class="editor-tab active" data-tab="guide">
+                    <span class="file-icon md-icon">M↓</span>
+                    <span class="tab-title">Django_Guide.md</span>
+                    <span class="tab-close" title="Close">✕</span>
+                </div>
+                <!-- Additional dynamic tabs will open here -->
+            </div>
+
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs-bar" id="breadcrumbs">
+                <span class="breadcrumb-item">django_project</span>
+                <span class="bc-sep">›</span>
+                <span class="breadcrumb-item" id="bc-folder">docs</span>
+                <span class="bc-sep">›</span>
+                <span class="breadcrumb-item current" id="bc-file">Django_Guide.md</span>
+                <div class="breadcrumbs-actions">
+                    <button class="bc-action-btn" id="copyCurrentViewBtn" title="Copy current document to clipboard">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span>Copy File Content</span>
+                    </button>
+                    <button class="bc-action-btn highlight" id="copyAllContentBtnTop" title="Copy complete 18-step guide to clipboard">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Copy All Steps</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Editor Document View -->
+            <div class="editor-viewport" id="editorViewport">
+                <!-- Guide Content (Main Markdown Reader) -->
+                <div class="file-view active" id="view-guide">
+                    <div class="guide-banner">
+                        <div class="guide-banner-content">
+                            <span class="badge-tag">COMPLETE TUTORIAL</span>
+                            <h1>Python + Django Full-Stack Guide</h1>
+                            <p class="guide-subtitle">The simplest path: <strong>Python + Django + HTML/CSS + JavaScript + SQLite</strong> without unnecessary complexity. One complete project from zero, step by step.</p>
+                        </div>
+                        <div class="guide-banner-actions">
+                            <button class="hero-copy-btn" id="heroCopyBtn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copy Entire Tutorial</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 1 -->
+                    <section class="step-card" id="step-1">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 1</span>
+                                <h2>Setup Environment</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="1" title="Copy Step 1 commands">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Check Python installation, create project folder, set up virtual environment, and install Django:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">powershell / bash</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-bash"><span class="c1"># 1. Check Python installation</span>
+python --version
+
+<span class="c1"># 2. Create project folder</span>
+mkdir django_project
+<span class="nb">cd</span> django_project
+
+<span class="c1"># 3. Create virtual environment</span>
+python -m venv venv
+
+<span class="c1"># 4. Activate it on Windows</span>
+venv\Scripts\activate
+
+<span class="c1"># 5. Install Django</span>
+pip install django
+
+<span class="c1"># 6. Check Django version</span>
+django-admin --version</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 2 -->
+                    <section class="step-card" id="step-2">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 2</span>
+                                <h2>Create Django Project</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="2" title="Copy Step 2 commands">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Initialize the project inside the current directory (note the trailing period <code>.</code>):</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">powershell</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-bash">django-admin startproject config .</code></pre>
+                        </div>
+
+                        <p class="step-subtext">You will get the following structure:</p>
+                        <div class="code-block-container structure-box">
+                            <div class="code-block-header">
+                                <span class="code-lang">directory tree</span>
+                                <button class="copy-snippet-btn" title="Copy tree">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code>django_project/
+│
+├── config/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+│
+├── manage.py
+└── venv/</code></pre>
+                        </div>
+
+                        <p class="step-desc">Start the development server:</p>
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">powershell</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-bash">python manage.py runserver</code></pre>
+                        </div>
+                        <div class="tip-callout">
+                            <span class="callout-icon">💡</span>
+                            <span>Open your browser at: <a href="http://127.0.0.1:8000/" target="_blank" rel="noopener">http://127.0.0.1:8000/</a> to verify the rocket animation!</span>
+                        </div>
+                    </section>
+
+                    <!-- STEP 3 -->
+                    <section class="step-card" id="step-3">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 3</span>
+                                <h2>Understand the Project</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="3" title="Copy Step 3 summary">Copy Step</button>
+                        </div>
+                        <p class="step-desc">The important files and their responsibilities:</p>
+
+                        <div class="file-reference-grid">
+                            <div class="ref-card">
+                                <code class="ref-file">settings.py</code>
+                                <span class="ref-desc">Project configuration, apps, database settings</span>
+                            </div>
+                            <div class="ref-card">
+                                <code class="ref-file">urls.py</code>
+                                <span class="ref-desc">URL routing to appropriate views</span>
+                            </div>
+                            <div class="ref-card">
+                                <code class="ref-file">models.py</code>
+                                <span class="ref-desc">Database schema definition (ORM tables)</span>
+                            </div>
+                            <div class="ref-card">
+                                <code class="ref-file">views.py</code>
+                                <span class="ref-desc">Application logic & request handling</span>
+                            </div>
+                            <div class="ref-card">
+                                <code class="ref-file">forms.py</code>
+                                <span class="ref-desc">Forms handling, validation & rendering</span>
+                            </div>
+                            <div class="ref-card">
+                                <code class="ref-file">templates/</code>
+                                <span class="ref-desc">HTML frontend presentation pages</span>
+                            </div>
+                        </div>
+
+                        <p class="step-desc">The basic Django request-response flow:</p>
+                        <div class="flow-diagram-box">
+                            <div class="code-block-header">
+                                <span class="code-lang">architecture flow</span>
+                                <button class="copy-snippet-btn" title="Copy flow">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code>Browser
+   ↓
+URL
+   ↓
+View
+   ↓
+Model / Database
+   ↓
+View
+   ↓
+HTML Template
+   ↓
+Browser</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 4 -->
+                    <section class="step-card" id="step-4">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 4</span>
+                                <h2>Create an App</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="4" title="Copy Step 4 command">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Create the <strong>Student Management</strong> application module:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">powershell</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-bash">python manage.py startapp students</code></pre>
+                        </div>
+
+                        <p class="step-subtext">Now your folder structure includes the <code>students/</code> directory:</p>
+                        <div class="code-block-container structure-box">
+                            <div class="code-block-header">
+                                <span class="code-lang">directory tree</span>
+                                <button class="copy-snippet-btn" title="Copy tree">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code>django_project/
+│
+├── config/
+│
+├── students/
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+│
+└── manage.py</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 5 -->
+                    <section class="step-card" id="step-5">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 5</span>
+                                <h2>Register the App</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="5" title="Copy Step 5 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Open <code>config/settings.py</code>, find <code>INSTALLED_APPS</code>, and add <code>'students',</code>:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">python — config/settings.py</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-python">INSTALLED_APPS = [
+    <span class="s1">'django.contrib.admin'</span>,
+    <span class="s1">'django.contrib.auth'</span>,
+    <span class="s1">'django.contrib.contenttypes'</span>,
+    <span class="s1">'django.contrib.sessions'</span>,
+    <span class="s1">'django.contrib.messages'</span>,
+    <span class="s1">'django.contrib.staticfiles'</span>,
+
+    <span class="s1">'students'</span>,  <span class="c1"># &lt;--- Add your new app here</span>
+]</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 6 -->
+                    <section class="step-card" id="step-6">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 6</span>
+                                <h2>Create Student Model</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="6" title="Copy Step 6 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Open <code>students/models.py</code> and add the <code>Student</code> model:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">python — students/models.py</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-python"><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> models
+
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    name = models.<span class="n">CharField</span>(max_length=<span class="mi">100</span>)
+    email = models.<span class="n">EmailField</span>()
+    course = models.<span class="n">CharField</span>(max_length=<span class="mi">100</span>)
+    age = models.<span class="n">IntegerField</span>()
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>.name</code></pre>
+                        </div>
+
+                        <p class="step-subtext">Our database table will store:</p>
+                        <div class="code-block-container structure-box">
+                            <div class="code-block-header">
+                                <span class="code-lang">database schema</span>
+                                <button class="copy-snippet-btn" title="Copy schema">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code>Student
+│
+├── name
+├── email
+├── course
+└── age</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 7 -->
+                    <section class="step-card" id="step-7">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 7</span>
+                                <h2>Create Database (Migrations)</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="7" title="Copy Step 7 commands">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Generate migration scripts and apply them to create SQLite tables:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">powershell</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-bash"><span class="c1"># 1. Prepare migration blueprints</span>
+python manage.py makemigrations
+
+<span class="c1"># 2. Apply to db.sqlite3</span>
+python manage.py migrate</code></pre>
+                        </div>
+                        <div class="tip-callout">
+                            <span class="callout-icon">🗄️</span>
+                            <span>This automatically creates and manages your <code>db.sqlite3</code> database file.</span>
+                        </div>
+                    </section>
+
+                    <!-- STEP 8 -->
+                    <section class="step-card" id="step-8">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 8</span>
+                                <h2>Register Model in Admin</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="8" title="Copy Step 8 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Open <code>students/admin.py</code> and register <code>Student</code> with Django's built-in administration site:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">python — students/admin.py</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-python"><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> admin
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> Student
+
+admin.site.<span class="nf">register</span>(Student)</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 9 -->
+                    <section class="step-card" id="step-9">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 9</span>
+                                <h2>Create Admin User & Run Server</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="9" title="Copy Step 9 commands">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Create a superuser to access the Django admin portal:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">powershell</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-bash">python manage.py createsuperuser</code></pre>
+                        </div>
+
+                        <p class="step-subtext">Follow the prompts to enter credentials:</p>
+                        <div class="code-block-container structure-box">
+                            <pre><code>Username: admin
+Email: admin@example.com
+Password: (enter password)</code></pre>
+                        </div>
+
+                        <p class="step-desc">Launch the server and log in:</p>
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">powershell</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-bash">python manage.py runserver</code></pre>
+                        </div>
+                        <div class="tip-callout">
+                            <span class="callout-icon">🔐</span>
+                            <span>Visit: <a href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener">http://127.0.0.1:8000/admin/</a> and log in to manage Students immediately!</span>
+                        </div>
+                    </section>
+
+                    <!-- STEP 10 -->
+                    <section class="step-card" id="step-10">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 10</span>
+                                <h2>Create Forms (ModelForm Shortcut)</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="10" title="Copy Step 10 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Create <code>students/forms.py</code> using Django's <code>ModelForm</code>:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">python — students/forms.py</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-python"><span class="kn">from</span> <span class="nn">django.forms</span> <span class="kn">import</span> ModelForm
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> Student
+
+
+<span class="k">class</span> <span class="nc">StudentForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        model = Student
+        fields = <span class="s1">'__all__'</span></code></pre>
+                        </div>
+                        <p class="step-subtext">Django automatically maps all fields: <code>Name</code>, <code>Email</code>, <code>Course</code>, <code>Age</code>.</p>
+                    </section>
+
+                    <!-- STEP 11 -->
+                    <section class="step-card" id="step-11">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 11</span>
+                                <h2>Create Views (Generic Class-Based Views)</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="11" title="Copy Step 11 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Open <code>students/views.py</code>. We use Django's Generic Views to keep the code concise and clean:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">python — students/views.py</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-python"><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> reverse_lazy
+<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> ListView, CreateView, UpdateView, DeleteView
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> Student
+
+
+<span class="k">class</span> <span class="nc">StudentList</span><span class="p">(</span><span class="n">ListView</span><span class="p">):</span>
+    model = Student
+    template_name = <span class="s1">'students/student_list.html'</span>
+    context_object_name = <span class="s1">'students'</span>
+
+
+<span class="k">class</span> <span class="nc">StudentCreate</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
+    model = Student
+    fields = <span class="s1">'__all__'</span>
+    template_name = <span class="s1">'students/student_form.html'</span>
+    success_url = reverse_lazy(<span class="s1">'student_list'</span>)
+
+
+<span class="k">class</span> <span class="nc">StudentUpdate</span><span class="p">(</span><span class="n">UpdateView</span><span class="p">):</span>
+    model = Student
+    fields = <span class="s1">'__all__'</span>
+    template_name = <span class="s1">'students/student_form.html'</span>
+    success_url = reverse_lazy(<span class="s1">'student_list'</span>)
+
+
+<span class="k">class</span> <span class="nc">StudentDelete</span><span class="p">(</span><span class="n">DeleteView</span><span class="p">):</span>
+    model = Student
+    template_name = <span class="s1">'students/student_delete.html'</span>
+    success_url = reverse_lazy(<span class="s1">'student_list'</span>)</code></pre>
+                        </div>
+
+                        <div class="comparison-grid">
+                            <div class="comp-box">
+                                <h4>Normal Django way</h4>
+                                <code>Model → ModelForm → Function View</code>
+                            </div>
+                            <div class="comp-box highlight">
+                                <h4>Short way (Used here)</h4>
+                                <code>Model → Generic View (fields = '__all__')</code>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- STEP 12 -->
+                    <section class="step-card" id="step-12">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 12</span>
+                                <h2>Create App URLs</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="12" title="Copy Step 12 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Create <code>students/urls.py</code> to define routes for list, add, edit, and delete actions:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">python — students/urls.py</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-python"><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> path
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> (
+    StudentList,
+    StudentCreate,
+    StudentUpdate,
+    StudentDelete
+)
+
+
+urlpatterns = [
+    path(<span class="s1">''</span>, StudentList.as_view(), name=<span class="s1">'student_list'</span>),
+    path(<span class="s1">'add/'</span>, StudentCreate.as_view(), name=<span class="s1">'student_add'</span>),
+    path(<span class="s1">'edit/&lt;int:pk&gt;/'</span>, StudentUpdate.as_view(), name=<span class="s1">'student_edit'</span>),
+    path(<span class="s1">'delete/&lt;int:pk&gt;/'</span>, StudentDelete.as_view(), name=<span class="s1">'student_delete'</span>),
+]</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 13 -->
+                    <section class="step-card" id="step-13">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 13</span>
+                                <h2>Connect App URLs to Project</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="13" title="Copy Step 13 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Open <code>config/urls.py</code> and include the <code>students.urls</code>:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">python — config/urls.py</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-python"><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> admin
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> path, include
+
+
+urlpatterns = [
+    path(<span class="s1">'admin/'</span>, admin.site.urls),
+    path(<span class="s1">''</span>, include(<span class="s1">'students.urls'</span>)),
+]</code></pre>
+                        </div>
+
+                        <p class="step-subtext">Your project routing map:</p>
+                        <div class="code-block-container structure-box">
+                            <pre><code>/              → Student List
+/add/          → Add Student
+/edit/1/       → Edit Student
+/delete/1/     → Delete Student
+/admin/        → Admin Dashboard</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 14 -->
+                    <section class="step-card" id="step-14">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 14</span>
+                                <h2>Create Templates Directory</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="14" title="Copy Step 14 structure">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Inside <code>students</code>, create <code>templates/students/</code>:</p>
+
+                        <div class="code-block-container structure-box">
+                            <div class="code-block-header">
+                                <span class="code-lang">directory structure</span>
+                                <button class="copy-snippet-btn" title="Copy tree">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code>students/
+│
+├── templates/
+│   └── students/
+│       ├── base.html
+│       ├── student_list.html
+│       ├── student_form.html
+│       └── student_delete.html
+│
+├── models.py
+├── views.py
+├── urls.py
+└── admin.py</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 15 -->
+                    <section class="step-card" id="step-15">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 15</span>
+                                <h2>Create base.html</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="15" title="Copy Step 15 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Create <code>students/templates/students/base.html</code> as the common layout:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">html — students/templates/students/base.html</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Student Management<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"{% url 'student_list' %}"</span><span class="p">&gt;</span>Students<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    |
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"{% url 'student_add' %}"</span><span class="p">&gt;</span>Add Student<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    |
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/admin/"</span><span class="p">&gt;</span>Admin<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+
+{% block content %}
+{% endblock %}
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 16 -->
+                    <section class="step-card" id="step-16">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 16</span>
+                                <h2>Student List (student_list.html)</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="16" title="Copy Step 16 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Create <code>students/templates/students/student_list.html</code> to display student records in a table:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">html — students/templates/students/student_list.html</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-html">{% extends 'students/base.html' %}
+
+{% block content %}
+
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Students<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"{% url 'student_add' %}"</span><span class="p">&gt;</span>
+    Add Student
+<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">table</span> <span class="na">border</span><span class="o">=</span><span class="s">"1"</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Email<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Course<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Age<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Actions<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+
+    {% for student in students %}
+
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ student.name }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ student.email }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ student.course }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ student.age }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"{% url 'student_edit' student.pk %}"</span><span class="p">&gt;</span>
+                Edit
+            <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"{% url 'student_delete' student.pk %}"</span><span class="p">&gt;</span>
+                Delete
+            <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+
+    {% empty %}
+
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">colspan</span><span class="o">=</span><span class="s">"5"</span><span class="p">&gt;</span>
+            No students found.
+        <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+
+    {% endfor %}
+
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+
+{% endblock %}</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 17 -->
+                    <section class="step-card" id="step-17">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 17</span>
+                                <h2>Student Form (student_form.html)</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="17" title="Copy Step 17 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Create <code>students/templates/students/student_form.html</code>. Notice that this single template handles both <strong>Add Student</strong> and <strong>Edit Student</strong>:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">html — students/templates/students/student_form.html</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-html">{% extends 'students/base.html' %}
+
+{% block content %}
+
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Student<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>
+        Save
+    <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+{% endblock %}</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 18 -->
+                    <section class="step-card" id="step-18">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 18</span>
+                                <h2>Delete Student (student_delete.html)</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="18" title="Copy Step 18 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Create <code>students/templates/students/student_delete.html</code> for confirmation before deleting a student record:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">html — students/templates/students/student_delete.html</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-html">{% extends 'students/base.html' %}
+
+{% block content %}
+
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Delete Student<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    Delete {{ object.name }}?
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
+
+    {% csrf_token %}
+
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>
+        Yes, Delete
+    <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"{% url 'student_list' %}"</span><span class="p">&gt;</span>
+    Cancel
+<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+{% endblock %}</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 20 -->
+                    <section class="step-card" id="step-20">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 20</span>
+                                <h2>Add Login (Built-in Auth URLs)</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="20" title="Copy Step 20 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Django already has authentication built in. Open <code>config/urls.py</code> and include <code>django.contrib.auth.urls</code>:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">python — config/urls.py</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-python"><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> admin
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> path, include
+
+
+urlpatterns = [
+    path(<span class="s1">'admin/'</span>, admin.site.urls),
+    path(<span class="s1">'accounts/'</span>, include(<span class="s1">'django.contrib.auth.urls'</span>)),
+    path(<span class="s1">''</span>, include(<span class="s1">'students.urls'</span>)),
+]</code></pre>
+                        </div>
+
+                        <p class="step-subtext">Now Django automatically provides built-in routes:</p>
+                        <div class="code-block-container structure-box">
+                            <pre><code>/accounts/login/
+/accounts/logout/</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 21 -->
+                    <section class="step-card" id="step-21">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 21</span>
+                                <h2>Create Login Page</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="21" title="Copy Step 21 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Create <code>students/templates/registration/login.html</code>:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">html — students/templates/registration/login.html</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-html">{% extends 'students/base.html' %}
+
+{% block content %}
+
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Login<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>
+        Login
+    <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+{% endblock %}</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 22 -->
+                    <section class="step-card" id="step-22">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 22</span>
+                                <h2>Configure Login Settings</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="22" title="Copy Step 22 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Open <code>config/settings.py</code> and add redirect configurations at the bottom:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">python — config/settings.py</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-python">LOGIN_URL = <span class="s1">'/accounts/login/'</span>
+LOGIN_REDIRECT_URL = <span class="s1">'/'</span>
+LOGOUT_REDIRECT_URL = <span class="s1">'/accounts/login/'</span></code></pre>
+                        </div>
+                    </section>
+
+                    <!-- STEP 24 -->
+                    <section class="step-card" id="step-24">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill">Step 24</span>
+                                <h2>Add Login/Logout to Navbar</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="24" title="Copy Step 24 code">Copy Step</button>
+                        </div>
+                        <p class="step-desc">Update <code>students/templates/students/base.html</code> to display user authentication status and a logout form:</p>
+
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">html — students/templates/students/base.html</span>
+                                <button class="copy-snippet-btn" title="Copy code snippet">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-html"><span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"{% url 'student_list' %}"</span><span class="p">&gt;</span>
+        Students
+    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+    |
+
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"{% url 'student_add' %}"</span><span class="p">&gt;</span>
+        Add Student
+    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+    |
+
+    {% if user.is_authenticated %}
+
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>
+            Hello {{ user.username }}
+        <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span> <span class="na">action</span><span class="o">=</span><span class="s">"{% url 'logout' %}"</span> <span class="na">style</span><span class="o">=</span><span class="s">"display:inline;"</span><span class="p">&gt;</span>
+            {% csrf_token %}
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Logout<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+    {% else %}
+
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"{% url 'login' %}"</span><span class="p">&gt;</span>
+            Login
+        <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+    {% endif %}
+
+<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Summary / Congratulations Footer -->
+                    <div class="completion-card">
+                        <h3>🎉 Congratulations!</h3>
+                        <p>You have built a complete, production-grade CRUD web application in Python & Django with generic views, templates, SQLite ORM, and the admin interface!</p>
+                        <div class="completion-actions">
+                            <button class="hero-copy-btn" id="footerCopyBtn">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copy Full Tutorial to Clipboard</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Individual File Code Views -->
+                <div class="file-view" id="view-settings">
+                    <div class="file-code-header">
+                        <span class="file-path">config / settings.py</span>
+                        <button class="copy-snippet-btn" data-target="code-settings">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-settings" class="language-python">INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    'students',
+]
+
+# Step 22 - Auth Redirects
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'</code></pre>
+                </div>
+
+                <div class="file-view" id="view-models">
+                    <div class="file-code-header">
+                        <span class="file-path">students / models.py</span>
+                        <button class="copy-snippet-btn" data-target="code-models">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-models" class="language-python">from django.db import models
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    course = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+    def __str__(self):
+        return self.name</code></pre>
+                </div>
+
+                <div class="file-view" id="view-admin">
+                    <div class="file-code-header">
+                        <span class="file-path">students / admin.py</span>
+                        <button class="copy-snippet-btn" data-target="code-admin">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-admin" class="language-python">from django.contrib import admin
+from .models import Student
+
+admin.site.register(Student)</code></pre>
+                </div>
+
+                <div class="file-view" id="view-forms">
+                    <div class="file-code-header">
+                        <span class="file-path">students / forms.py</span>
+                        <button class="copy-snippet-btn" data-target="code-forms">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-forms" class="language-python">from django.forms import ModelForm
+from .models import Student
+
+
+class StudentForm(ModelForm):
+    class Meta:
+        model = Student
+        fields = '__all__'</code></pre>
+                </div>
+
+                <div class="file-view" id="view-views">
+                    <div class="file-code-header">
+                        <span class="file-path">students / views.py</span>
+                        <button class="copy-snippet-btn" data-target="code-views">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-views" class="language-python">from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+
+from .models import Student
+
+
+class StudentList(ListView):
+    model = Student
+    template_name = 'students/student_list.html'
+    context_object_name = 'students'
+
+
+class StudentCreate(CreateView):
+    model = Student
+    fields = '__all__'
+    template_name = 'students/student_form.html'
+    success_url = reverse_lazy('student_list')
+
+
+class StudentUpdate(UpdateView):
+    model = Student
+    fields = '__all__'
+    template_name = 'students/student_form.html'
+    success_url = reverse_lazy('student_list')
+
+
+class StudentDelete(DeleteView):
+    model = Student
+    template_name = 'students/student_delete.html'
+    success_url = reverse_lazy('student_list')</code></pre>
+                </div>
+
+                <div class="file-view" id="view-student_urls">
+                    <div class="file-code-header">
+                        <span class="file-path">students / urls.py</span>
+                        <button class="copy-snippet-btn" data-target="code-student-urls">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-student-urls" class="language-python">from django.urls import path
+from .views import (
+    StudentList,
+    StudentCreate,
+    StudentUpdate,
+    StudentDelete
+)
+
+
+urlpatterns = [
+    path('', StudentList.as_view(), name='student_list'),
+    path('add/', StudentCreate.as_view(), name='student_add'),
+    path('edit/<int:pk>/', StudentUpdate.as_view(), name='student_edit'),
+    path('delete/<int:pk>/', StudentDelete.as_view(), name='student_delete'),
+]</code></pre>
+                </div>
+
+                <div class="file-view" id="view-config_urls">
+                    <div class="file-code-header">
+                        <span class="file-path">config / urls.py</span>
+                        <button class="copy-snippet-btn" data-target="code-config-urls">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-config-urls" class="language-python">from django.contrib import admin
+from django.urls import path, include
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('students.urls')),
+]</code></pre>
+                </div>
+
+                <div class="file-view" id="view-base_html">
+                    <div class="file-code-header">
+                        <span class="file-path">students / templates / students / base.html</span>
+                        <button class="copy-snippet-btn" data-target="code-base-html">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-base-html" class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Student Management&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;nav&gt;
+    &lt;a href="{% url 'student_list' %}"&gt;Students&lt;/a&gt;
+    |
+    &lt;a href="{% url 'student_add' %}"&gt;Add Student&lt;/a&gt;
+    |
+    {% if user.is_authenticated %}
+        &lt;span&gt;Hello {{ user.username }}&lt;/span&gt;
+        &lt;form method="POST" action="{% url 'logout' %}" style="display:inline;"&gt;
+            {% csrf_token %}
+            &lt;button type="submit"&gt;Logout&lt;/button&gt;
+        &lt;/form&gt;
+    {% else %}
+        &lt;a href="{% url 'login' %}"&gt;Login&lt;/a&gt;
+    {% endif %}
+&lt;/nav&gt;
+
+&lt;hr&gt;
+
+{% block content %}
+{% endblock %}
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <div class="file-view" id="view-login_html">
+                    <div class="file-code-header">
+                        <span class="file-path">students / templates / registration / login.html</span>
+                        <button class="copy-snippet-btn" data-target="code-login-html">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-login-html" class="language-html">{% extends 'students/base.html' %}
+
+{% block content %}
+
+&lt;h1&gt;Login&lt;/h1&gt;
+
+&lt;form method="POST"&gt;
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    &lt;button type="submit"&gt;
+        Login
+    &lt;/button&gt;
+
+&lt;/form&gt;
+
+{% endblock %}</code></pre>
+                </div>
+
+                <div class="file-view" id="view-list_html">
+                    <div class="file-code-header">
+                        <span class="file-path">students / templates / students / student_list.html</span>
+                        <button class="copy-snippet-btn" data-target="code-list-html">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-list-html" class="language-html">{% extends 'students/base.html' %}
+
+{% block content %}
+
+&lt;h1&gt;Students&lt;/h1&gt;
+
+&lt;a href="{% url 'student_add' %}"&gt;
+    Add Student
+&lt;/a&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;table border="1"&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Email&lt;/th&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+        &lt;th&gt;Age&lt;/th&gt;
+        &lt;th&gt;Actions&lt;/th&gt;
+    &lt;/tr&gt;
+
+    {% for student in students %}
+
+    &lt;tr&gt;
+        &lt;td&gt;{{ student.name }}&lt;/td&gt;
+        &lt;td&gt;{{ student.email }}&lt;/td&gt;
+        &lt;td&gt;{{ student.course }}&lt;/td&gt;
+        &lt;td&gt;{{ student.age }}&lt;/td&gt;
+
+        &lt;td&gt;
+            &lt;a href="{% url 'student_edit' student.pk %}"&gt;
+                Edit
+            &lt;/a&gt;
+
+            &lt;a href="{% url 'student_delete' student.pk %}"&gt;
+                Delete
+            &lt;/a&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+
+    {% empty %}
+
+    &lt;tr&gt;
+        &lt;td colspan="5"&gt;
+            No students found.
+        &lt;/td&gt;
+    &lt;/tr&gt;
+
+    {% endfor %}
+
+&lt;/table&gt;
+
+{% endblock %}</code></pre>
+                </div>
+
+                <div class="file-view" id="view-form_html">
+                    <div class="file-code-header">
+                        <span class="file-path">students / templates / students / student_form.html</span>
+                        <button class="copy-snippet-btn" data-target="code-form-html">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-form-html" class="language-html">{% extends 'students/base.html' %}
+
+{% block content %}
+
+&lt;h1&gt;Student&lt;/h1&gt;
+
+&lt;form method="POST"&gt;
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    &lt;button type="submit"&gt;
+        Save
+    &lt;/button&gt;
+
+&lt;/form&gt;
+
+{% endblock %}</code></pre>
+                </div>
+
+                <div class="file-view" id="view-delete_html">
+                    <div class="file-code-header">
+                        <span class="file-path">students / templates / students / student_delete.html</span>
+                        <button class="copy-snippet-btn" data-target="code-delete-html">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-delete-html" class="language-html">{% extends 'students/base.html' %}
+
+{% block content %}
+
+&lt;h1&gt;Delete Student&lt;/h1&gt;
+
+&lt;p&gt;
+    Delete {{ object.name }}?
+&lt;/p&gt;
+
+&lt;form method="POST"&gt;
+
+    {% csrf_token %}
+
+    &lt;button type="submit"&gt;
+        Yes, Delete
+    &lt;/button&gt;
+
+&lt;/form&gt;
+
+&lt;a href="{% url 'student_list' %}"&gt;
+    Cancel
+&lt;/a&gt;
+
+{% endblock %}</code></pre>
+                </div>
+
+                <div class="file-view" id="view-flow">
+                    <div class="file-code-header">
+                        <span class="file-path">docs / Architecture_Flow.txt</span>
+                        <button class="copy-snippet-btn" data-target="code-flow-txt">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-flow-txt">DJANGO ARCHITECTURE FLOW (MTV - MODEL TEMPLATE VIEW):
+
+1. User sends HTTP Request from Browser:
+   http://127.0.0.1:8000/
+
+2. URL Dispatcher (config/urls.py & students/urls.py):
+   Matches URL pattern and invokes the corresponding View class or function.
+
+3. View (students/views.py):
+   Executes application logic.
+   Communicates with Model to query or mutate database records.
+
+4. Model (students/models.py):
+   Interacts with SQLite database (db.sqlite3) via Django ORM.
+   Returns querysets or object instances.
+
+5. Template (students/templates/students/*.html):
+   Django Template Language (DTL) renders variables, loops ({% for %}),
+   and form controls into pure HTML.
+
+6. Browser:
+   Receives rendered HTML page with CSS and JavaScript response.</code></pre>
+                </div>
+
+                <div class="file-view" id="view-manage">
+                    <div class="file-code-header">
+                        <span class="file-path">manage.py</span>
+                        <button class="copy-snippet-btn" data-target="code-manage">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-manage" class="language-python">#!/usr/bin/env python
+"""Django's command-line utility for administrative tasks."""
+import os
+import sys
+
+
+def main():
+    """Run administrative tasks."""
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+    try:
+        from django.core.management import execute_from_command_line
+    except ImportError as exc:
+        raise ImportError(
+            "Couldn't import Django. Are you sure it's installed and "
+            "available on your PYTHONPATH environment variable? Did you "
+            "forget to activate a virtual environment?"
+        ) from exc
+    execute_from_command_line(sys.argv)
+
+
+if __name__ == '__main__':
+    main()</code></pre>
+                </div>
+
+                <div class="file-view" id="view-db">
+                    <div class="file-code-header">
+                        <span class="file-path">db.sqlite3 (SQLite Database)</span>
+                    </div>
+                    <div class="db-inspector-notice">
+                        <h3>SQLite Database File: <code>db.sqlite3</code></h3>
+                        <p>This binary database file stores your Django models and tables created via <code>python manage.py migrate</code>.</p>
+                        <ul class="db-table-list">
+                            <li><code>students_student</code>: Stores columns (<code>id</code>, <code>name</code>, <code>email</code>, <code>course</code>, <code>age</code>)</li>
+                            <li><code>auth_user</code>: Stores Django superusers and staff accounts</li>
+                            <li><code>django_migrations</code>: Records applied schema migrations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Status Bar at Bottom -->
+    <footer class="statusbar" id="statusbar">
+        <div class="status-left">
+            <span class="status-item git-branch" title="Git Branch">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="18" cy="18" r="3"></circle>
+                    <circle cx="6" cy="6" r="3"></circle>
+                    <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+                    <line x1="6" y1="9" x2="6" y2="21"></line>
+                </svg>
+                <span>main*</span>
+            </span>
+            <span class="status-item sync-icon" title="Synchronized">↻</span>
+            <span class="status-item errors-warnings">
+                <span class="err-count">⊗ 0</span>
+                <span class="warn-count">⚠ 0</span>
+            </span>
+        </div>
+        <div class="status-right">
+            <span class="status-item copy-status-trigger" id="statusBarCopyGuide" title="Click to copy entire guide">
+                📋 Copy Guide
+            </span>
+            <span class="status-item" id="statusLnCol">Ln 1, Col 1</span>
+            <span class="status-item">Spaces: 4</span>
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">CRLF</span>
+            <span class="status-item lang-badge" id="statusLangBadge">Markdown</span>
+            <span class="status-item python-badge">Python 3.12 (venv)</span>
+            <span class="status-item bell-icon" title="Notifications">🔔</span>
+        </div>
+    </footer>
+
+    <!-- Toast Notification for Clipboard Copy Feedback -->
+    <div class="toast-notification" id="toastNotification">
+        <div class="toast-icon">✓</div>
+        <div class="toast-body">
+            <div class="toast-title" id="toastTitle">Copied to Clipboard!</div>
+            <div class="toast-message" id="toastMessage">Content is ready in your clipboard.</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
