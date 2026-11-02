@@ -477,6 +477,12 @@ html, body {
     color: #9e9e9e;
 }
 
+.css-icon {
+    color: #2965f1;
+    font-size: 11px;
+    font-family: var(--font-code);
+}
+
 .badge {
     margin-left: auto;
     font-size: 10px;
@@ -484,6 +490,12 @@ html, body {
     color: #70baff;
     padding: 1px 6px;
     border-radius: 10px;
+}
+
+.badge.p2-badge {
+    background: rgba(46, 204, 113, 0.2);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.35);
 }
 
 .sub-badge {
@@ -1153,6 +1165,195 @@ p code, li code {
 .toast-message {
     font-size: 11.5px;
     color: #aaaaaa;
+}
+
+/* ==========================================================================
+   Project 2 — Interactive UI Simulator & Portal Showcase
+   ========================================================================== */
+.p2-simulator-box {
+    background: #141414;
+    border: 1px solid var(--vscode-border);
+    border-radius: 8px;
+    margin: 20px 0 30px;
+    overflow: hidden;
+}
+
+.p2-sim-header {
+    background: #1e1e1e;
+    border-bottom: 1px solid var(--vscode-border);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.p2-sim-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4ade80;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.p2-sim-tabs {
+    display: flex;
+    gap: 6px;
+}
+
+.p2-sim-btn {
+    background: #2d2d2d;
+    border: 1px solid var(--vscode-border);
+    color: var(--vscode-text-main);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.p2-sim-btn:hover {
+    background: #3c3c3c;
+    color: #ffffff;
+}
+
+.p2-sim-btn.active {
+    background: #007acc;
+    border-color: #007acc;
+    color: #ffffff;
+}
+
+.p2-sim-screen {
+    padding: 24px;
+    background: #f4f6f9;
+    color: #222222;
+    min-height: 380px;
+}
+
+.p2-live-navbar {
+    background: #222f3e;
+    color: white;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.p2-live-navbar h2 {
+    font-size: 16px;
+    margin: 0;
+    color: #ffffff;
+}
+
+.p2-live-navbar a {
+    color: #54a0ff;
+    text-decoration: none;
+    font-size: 13px;
+    margin-left: 14px;
+}
+
+.p2-live-navbar a:hover {
+    text-decoration: underline;
+}
+
+.p2-live-card {
+    background: white;
+    padding: 24px;
+    max-width: 500px;
+    margin: 15px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.p2-live-card h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #222f3e;
+    font-size: 18px;
+}
+
+.p2-live-card label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: #555555;
+    font-size: 12px;
+}
+
+.p2-live-card input {
+    width: 100%;
+    padding: 9px 12px;
+    margin-bottom: 14px;
+    border: 1px solid #dcdde1;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #333;
+}
+
+.p2-live-card button,
+.p2-live-btn {
+    background: #0984e3;
+    color: white;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s;
+}
+
+.p2-live-card button:hover,
+.p2-live-btn:hover {
+    background: #0769b5;
+}
+
+.p2-live-table-wrap {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    margin-top: 15px;
+}
+
+.p2-live-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.p2-live-table th,
+.p2-live-table td {
+    padding: 12px 16px;
+    border: 1px solid #f1f2f6;
+    text-align: left;
+    font-size: 13px;
+    color: #2f3640;
+}
+
+.p2-live-table th {
+    background: #222f3e;
+    color: white;
+    font-weight: 600;
+}
+
+.p2-live-table tr:hover {
+    background: #f8f9fa;
+}
+
+.p2-live-table td a {
+    color: #0984e3;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.p2-live-table td a:hover {
+    text-decoration: underline;
 }
 
 /* ==========================================================================

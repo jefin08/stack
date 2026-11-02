@@ -35,12 +35,12 @@
         </div>
 
         <div class="titlebar-center">
-            <div class="search-command-palette" id="quickOpenBtn" title="Quick Open (Ctrl+P / Click to search steps)">
+            <div class="search-command-palette" id="quickOpenBtn" title="Quick Open (Ctrl+P / Click to search steps & files)">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <span class="palette-text">django_project — Full-Stack Python Guide (Step 1 to 24)</span>
+                <span class="palette-text">django_project &amp; student_portal (new) — Python Django Guide &amp; CRUD Auth System</span>
             </div>
         </div>
 
@@ -158,6 +158,11 @@
                             <span class="file-icon md-icon">M↓</span>
                             <span class="file-name">Django_Guide.md</span>
                             <span class="badge">Steps 1 - 24</span>
+                        </div>
+                        <div class="tree-item" data-file="p2_guide" data-name="Student_Portal_Guide.md">
+                            <span class="file-icon md-icon">M↓</span>
+                            <span class="file-name">Student_Portal_Guide.md</span>
+                            <span class="badge p2-badge">FBV Auth</span>
                         </div>
                         <div class="tree-item" data-file="flow" data-name="Architecture_Flow.txt">
                             <span class="file-icon txt-icon">⚙</span>
@@ -290,7 +295,148 @@
                     </div>
                 </div>
 
-                <!-- Section 3: Jump to Step List (Outline) -->
+                <!-- Section 3: Project 2 - Student Portal (Function-Based Views & Auth) -->
+                <div class="tree-group">
+                    <div class="tree-group-header" data-toggle="project2-group">
+                        <span class="chevron">▼</span>
+                        <span class="group-name">NEW: STUDENT_PORTAL [FBV & AUTH]</span>
+                        <span class="badge p2-badge">Project 2</span>
+                    </div>
+                    <div class="tree-children" id="project2-group">
+                        <!-- config folder -->
+                        <div class="tree-folder">
+                            <div class="folder-header" data-toggle="folder-p2-config">
+                                <span class="chevron">▼</span>
+                                <span class="folder-icon">📁</span>
+                                <span class="folder-name">config</span>
+                            </div>
+                            <div class="folder-children" id="folder-p2-config">
+                                <div class="tree-item" data-file="p2_settings" data-name="config/settings.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">settings.py</span>
+                                    <span class="sub-badge">Config</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_config_urls" data-name="config/urls.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">urls.py</span>
+                                    <span class="sub-badge">Root URLs</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_wsgi" data-name="config/wsgi.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">wsgi.py</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_asgi" data-name="config/asgi.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">asgi.py</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- app1 folder -->
+                        <div class="tree-folder">
+                            <div class="folder-header" data-toggle="folder-p2-app1">
+                                <span class="chevron">▼</span>
+                                <span class="folder-icon">📁</span>
+                                <span class="folder-name">app1</span>
+                            </div>
+                            <div class="folder-children" id="folder-p2-app1">
+                                <div class="tree-item" data-file="p2_models" data-name="app1/models.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">models.py</span>
+                                    <span class="sub-badge">Model</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_views" data-name="app1/views.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">views.py</span>
+                                    <span class="sub-badge">FBVs</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_forms" data-name="app1/forms.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">forms.py</span>
+                                    <span class="sub-badge">Form</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_urls" data-name="app1/urls.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">urls.py</span>
+                                    <span class="sub-badge">App URLs</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_admin" data-name="app1/admin.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">admin.py</span>
+                                    <span class="sub-badge">Admin</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_apps" data-name="app1/apps.py">
+                                    <span class="file-icon py-icon">🐍</span>
+                                    <span class="file-name">apps.py</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- template folder -->
+                        <div class="tree-folder">
+                            <div class="folder-header" data-toggle="folder-p2-template">
+                                <span class="chevron">▼</span>
+                                <span class="folder-icon">📁</span>
+                                <span class="folder-name">template</span>
+                            </div>
+                            <div class="folder-children" id="folder-p2-template">
+                                <div class="tree-item" data-file="p2_base_html" data-name="template/base.html">
+                                    <span class="file-icon html-icon">&lt;&gt;</span>
+                                    <span class="file-name">base.html</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_login_html" data-name="template/login.html">
+                                    <span class="file-icon html-icon">&lt;&gt;</span>
+                                    <span class="file-name">login.html</span>
+                                    <span class="sub-badge">Teacher Auth</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_list_html" data-name="template/student_list.html">
+                                    <span class="file-icon html-icon">&lt;&gt;</span>
+                                    <span class="file-name">student_list.html</span>
+                                    <span class="sub-badge">Table CRUD</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_form_html" data-name="template/student_form.html">
+                                    <span class="file-icon html-icon">&lt;&gt;</span>
+                                    <span class="file-name">student_form.html</span>
+                                    <span class="sub-badge">Add / Edit</span>
+                                </div>
+                                <div class="tree-item" data-file="p2_delete_html" data-name="template/student_confirm_delete.html">
+                                    <span class="file-icon html-icon">&lt;&gt;</span>
+                                    <span class="file-name">student_confirm_delete.html</span>
+                                    <span class="sub-badge">Delete</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- static folder -->
+                        <div class="tree-folder">
+                            <div class="folder-header" data-toggle="folder-p2-static">
+                                <span class="chevron">▼</span>
+                                <span class="folder-icon">📁</span>
+                                <span class="folder-name">static/css</span>
+                            </div>
+                            <div class="folder-children" id="folder-p2-static">
+                                <div class="tree-item" data-file="p2_css" data-name="static/css/style.css">
+                                    <span class="file-icon css-icon">#</span>
+                                    <span class="file-name">style.css</span>
+                                    <span class="sub-badge">Portal UI</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- root files -->
+                        <div class="tree-item" data-file="p2_manage" data-name="manage.py">
+                            <span class="file-icon py-icon">🐍</span>
+                            <span class="file-name">manage.py</span>
+                        </div>
+                        <div class="tree-item" data-file="p2_db" data-name="db.sqlite3">
+                            <span class="file-icon db-icon">🗄️</span>
+                            <span class="file-name">db.sqlite3</span>
+                            <span class="sub-badge">SQLite DB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Jump to Step List (Outline) -->
                 <div class="tree-group">
                     <div class="tree-group-header" data-toggle="steps-outline">
                         <span class="chevron">▼</span>
@@ -1803,6 +1949,956 @@ if __name__ == '__main__':
                             <li><code>students_student</code>: Stores columns (<code>id</code>, <code>name</code>, <code>email</code>, <code>course</code>, <code>age</code>)</li>
                             <li><code>auth_user</code>: Stores Django superusers and staff accounts</li>
                             <li><code>django_migrations</code>: Records applied schema migrations</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <!-- Project 2 Guide View -->
+                <div class="file-view" id="view-p2_guide">
+                    <div class="guide-banner">
+                        <div class="guide-banner-content">
+                            <span class="badge-tag" style="background:#2ecc7133; color:#4ade80;">PROJECT 2 ARCHITECTURE</span>
+                            <h1>Django Student Management Portal (FBV &amp; Teacher Auth)</h1>
+                            <p class="guide-subtitle">
+                                Production-style Function-Based Views (FBV) with <strong>Teacher Authentication, ModelForms, CRUD Operations, SQLite ORM, and Custom Static UI</strong>.
+                            </p>
+                        </div>
+                        <div class="guide-banner-actions">
+                            <button class="hero-copy-btn" id="copyProject2MasterBtn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copy Full Project 2 Guide</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Live UI Simulator Box -->
+                    <div class="p2-simulator-box">
+                        <div class="p2-sim-header">
+                            <div class="p2-sim-title">
+                                <span>⚡</span> Interactive Live UI Preview (Rendered Django Templates + CSS)
+                            </div>
+                            <div class="p2-sim-tabs">
+                                <button class="p2-sim-btn active" data-sim="list">Student List View</button>
+                                <button class="p2-sim-btn" data-sim="login">Teacher Login</button>
+                                <button class="p2-sim-btn" data-sim="form">Add Student Form</button>
+                            </div>
+                        </div>
+
+                        <div class="p2-sim-screen">
+                            <!-- Simulated Navbar -->
+                            <nav class="p2-live-navbar">
+                                <h2>Student Management</h2>
+                                <div>
+                                    <span>Welcome, <strong>Staff_Admin</strong></span>
+                                    <a href="#view-p2_guide" id="simLogoutLink">Logout</a>
+                                </div>
+                            </nav>
+
+                            <!-- Tab 1: Student List Table Preview -->
+                            <div class="p2-sim-tab-content" id="simView-list">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                                    <h2 style="margin: 0; color: #222f3e; font-size: 20px;">Student List</h2>
+                                    <button class="p2-live-btn" id="simAddBtn">+ Add Student</button>
+                                </div>
+
+                                <div class="p2-live-table-wrap">
+                                    <table class="p2-live-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Roll No</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Course</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>101</strong></td>
+                                                <td>Alex Johnson</td>
+                                                <td>alex.j@example.com</td>
+                                                <td>Computer Science</td>
+                                                <td><a href="#view-p2_guide">Edit</a> | <a href="#view-p2_guide" style="color: #e74c3c;">Delete</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>102</strong></td>
+                                                <td>Sophia Davis</td>
+                                                <td>sophia.d@example.com</td>
+                                                <td>Data Analytics</td>
+                                                <td><a href="#view-p2_guide">Edit</a> | <a href="#view-p2_guide" style="color: #e74c3c;">Delete</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>103</strong></td>
+                                                <td>Michael Chen</td>
+                                                <td>m.chen@example.com</td>
+                                                <td>Cyber Security</td>
+                                                <td><a href="#view-p2_guide">Edit</a> | <a href="#view-p2_guide" style="color: #e74c3c;">Delete</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Tab 2: Teacher Login Preview -->
+                            <div class="p2-sim-tab-content" id="simView-login" style="display: none;">
+                                <div class="p2-live-card">
+                                    <h2>Teacher Login</h2>
+                                    <form onsubmit="event.preventDefault();">
+                                        <label>Username</label>
+                                        <input type="text" value="admin_teacher" readonly>
+
+                                        <label>Password</label>
+                                        <input type="password" value="••••••••" readonly>
+
+                                        <button type="button" class="p2-live-btn" style="width: 100%;">Login</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Tab 3: Student Form Preview -->
+                            <div class="p2-sim-tab-content" id="simView-form" style="display: none;">
+                                <div class="p2-live-card">
+                                    <h2>Add Student</h2>
+                                    <form onsubmit="event.preventDefault();">
+                                        <label>Roll No:</label>
+                                        <input type="number" placeholder="e.g. 104">
+
+                                        <label>Name:</label>
+                                        <input type="text" placeholder="e.g. Emily Watson">
+
+                                        <label>Email:</label>
+                                        <input type="email" placeholder="e.g. emily@example.com">
+
+                                        <label>Course:</label>
+                                        <input type="text" placeholder="e.g. Full-Stack Python">
+
+                                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                                            <button type="button" class="p2-live-btn">Save Student</button>
+                                            <button type="button" class="p2-sim-btn" style="background:#ddd; color:#333; padding: 9px 16px;">Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 Architecture Overview -->
+                    <section class="step-card">
+                        <div class="step-header">
+                            <div class="step-title-wrap">
+                                <span class="step-pill" style="background:#2ecc71; color:#141414;">P2 - Architecture</span>
+                                <h2>Function-Based Views (FBV) Flow</h2>
+                            </div>
+                            <button class="copy-step-btn" data-step="p2-flow" title="Copy FBV Flow">Copy Architecture</button>
+                        </div>
+                        <p class="step-desc">
+                            Unlike Class-Based Views (CBVs), this project utilizes explicit Function-Based Views (FBVs). Every HTTP request executes an explicit Python function decorated with <code>@login_required</code> and protected with Django CSRF tokens:
+                        </p>
+                        <div class="code-block-container">
+                            <div class="code-block-header">
+                                <span class="code-lang">Project 2 Structure Tree</span>
+                                <button class="copy-snippet-btn" title="Copy Structure">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <pre><code>new/
+├── config/
+│   ├── settings.py   → Configured with DIRS: [BASE_DIR/'Template'], STATICFILES_DIR
+│   ├── urls.py       → Delegates all routes to app1.urls
+│   ├── wsgi.py &amp; asgi.py
+├── app1/
+│   ├── models.py     → student model (rollno, name, email, course)
+│   ├── views.py      → teacher_login, teacher_logout, student_list, add, edit, delete
+│   ├── forms.py      → studentForm ModelForm
+│   ├── urls.py       → '', logout/, students/, add/, edit/&lt;id&gt;/, delete/&lt;id&gt;/
+│   ├── admin.py      → admin.site.register(student)
+│   └── apps.py       → App1Config
+├── template/
+│   ├── base.html     → Responsive navbar, messages container &amp; block content
+│   ├── login.html    → Teacher authentication form
+│   ├── student_list.html          → Responsive data table with Edit/Delete actions
+│   ├── student_form.html          → ModelForm create &amp; update view
+│   └── student_confirm_delete.html → POST confirmation dialog
+├── static/css/
+│   └── style.css     → Custom color palette (#222f3e, #0984e3, #f4f6f9)
+├── db.sqlite3        → SQLite database
+└── manage.py         → Command-line utility</code></pre>
+                        </div>
+                    </section>
+                </div>
+
+
+                <div class="file-view" id="view-p2_settings">
+                    <div class="file-code-header">
+                        <span class="file-path">new / config/settings.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-settings">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-settings" class="language-python">&quot;&quot;&quot;
+Django settings for config project.
+
+Generated by &#x27;django-admin startproject&#x27; using Django 5.2.18.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.2/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/5.2/ref/settings/
+&quot;&quot;&quot;
+
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / &#x27;subdir&#x27;.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = &#x27;django-insecure-uk+i&amp;stv*07v_8^cpgd%2=u#my6y*1ec-8%^zo)-uf$p-o@y13&#x27;
+
+# SECURITY WARNING: don&#x27;t run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+
+# Application definition
+
+INSTALLED_APPS = [
+    &#x27;django.contrib.admin&#x27;,
+    &#x27;django.contrib.auth&#x27;,
+    &#x27;django.contrib.contenttypes&#x27;,
+    &#x27;django.contrib.sessions&#x27;,
+    &#x27;django.contrib.messages&#x27;,
+    &#x27;django.contrib.staticfiles&#x27;,
+    &#x27;app1&#x27;
+]
+
+MIDDLEWARE = [
+    &#x27;django.middleware.security.SecurityMiddleware&#x27;,
+    &#x27;django.contrib.sessions.middleware.SessionMiddleware&#x27;,
+    &#x27;django.middleware.common.CommonMiddleware&#x27;,
+    &#x27;django.middleware.csrf.CsrfViewMiddleware&#x27;,
+    &#x27;django.contrib.auth.middleware.AuthenticationMiddleware&#x27;,
+    &#x27;django.contrib.messages.middleware.MessageMiddleware&#x27;,
+    &#x27;django.middleware.clickjacking.XFrameOptionsMiddleware&#x27;,
+]
+
+ROOT_URLCONF = &#x27;config.urls&#x27;
+
+TEMPLATES = [
+    {
+        &#x27;BACKEND&#x27;: &#x27;django.template.backends.django.DjangoTemplates&#x27;,
+        &#x27;DIRS&#x27;: [BASE_DIR/&#x27;Template&#x27;],
+        &#x27;APP_DIRS&#x27;: True,
+        &#x27;OPTIONS&#x27;: {
+            &#x27;context_processors&#x27;: [
+                &#x27;django.template.context_processors.request&#x27;,
+                &#x27;django.contrib.auth.context_processors.auth&#x27;,
+                &#x27;django.contrib.messages.context_processors.messages&#x27;,
+            ],
+        },
+    },
+]
+STATICFILES_DIR = [
+    BASE_DIR/&#x27;static&#x27;,
+]
+WSGI_APPLICATION = &#x27;config.wsgi.application&#x27;
+
+
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
+DATABASES = {
+    &#x27;default&#x27;: {
+        &#x27;ENGINE&#x27;: &#x27;django.db.backends.sqlite3&#x27;,
+        &#x27;NAME&#x27;: BASE_DIR / &#x27;db.sqlite3&#x27;,
+    }
+}
+
+
+# Password validation
+# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        &#x27;NAME&#x27;: &#x27;django.contrib.auth.password_validation.UserAttributeSimilarityValidator&#x27;,
+    },
+    {
+        &#x27;NAME&#x27;: &#x27;django.contrib.auth.password_validation.MinimumLengthValidator&#x27;,
+    },
+    {
+        &#x27;NAME&#x27;: &#x27;django.contrib.auth.password_validation.CommonPasswordValidator&#x27;,
+    },
+    {
+        &#x27;NAME&#x27;: &#x27;django.contrib.auth.password_validation.NumericPasswordValidator&#x27;,
+    },
+]
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/5.2/topics/i18n/
+
+LANGUAGE_CODE = &#x27;en-us&#x27;
+
+TIME_ZONE = &#x27;UTC&#x27;
+
+USE_I18N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
+
+STATIC_URL = &#x27;static/&#x27;
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = &#x27;django.db.models.BigAutoField&#x27;
+
+LOGIN_URL = &#x27;login&#x27;
+LOGIN_REDIRECT_URL = &#x27;student_list&#x27;
+LOGOUT_REDIRECT_URL = &#x27;login&#x27;</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_config_urls">
+                    <div class="file-code-header">
+                        <span class="file-path">new / config/urls.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-config_urls">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-config_urls" class="language-python">&quot;&quot;&quot;
+URL configuration for config project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path(&#x27;&#x27;, views.home, name=&#x27;home&#x27;)
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path(&#x27;&#x27;, Home.as_view(), name=&#x27;home&#x27;)
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path(&#x27;blog/&#x27;, include(&#x27;blog.urls&#x27;))
+&quot;&quot;&quot;
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path(&#x27;admin/&#x27;, admin.site.urls),
+    path(&#x27;&#x27;,include(&#x27;app1.urls&#x27;)),
+]
+</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_wsgi">
+                    <div class="file-code-header">
+                        <span class="file-path">new / config/wsgi.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-wsgi">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-wsgi" class="language-python">&quot;&quot;&quot;
+WSGI config for config project.
+
+It exposes the WSGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.2/howto/deployment/wsgi/
+&quot;&quot;&quot;
+
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault(&#x27;DJANGO_SETTINGS_MODULE&#x27;, &#x27;config.settings&#x27;)
+
+application = get_wsgi_application()
+</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_asgi">
+                    <div class="file-code-header">
+                        <span class="file-path">new / config/asgi.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-asgi">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-asgi" class="language-python">&quot;&quot;&quot;
+ASGI config for config project.
+
+It exposes the ASGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.2/howto/deployment/asgi/
+&quot;&quot;&quot;
+
+import os
+
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault(&#x27;DJANGO_SETTINGS_MODULE&#x27;, &#x27;config.settings&#x27;)
+
+application = get_asgi_application()
+</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_models">
+                    <div class="file-code-header">
+                        <span class="file-path">new / app1/models.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-models">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-models" class="language-python">from django.db import models
+
+# Create your models here.
+class student(models.Model):
+    rollno = models.IntegerField(unique=True)
+    name = models.CharField(max_length=30)
+    email = models.EmailField(unique=True)
+    course = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_views">
+                    <div class="file-code-header">
+                        <span class="file-path">new / app1/views.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-views">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-views" class="language-python">from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required, user_passes_test
+
+from .models import student
+from .forms import studentForm
+
+# Create your views here.
+def teacher_login(request):
+    if request.method == &#x27;POST&#x27;:
+        user = authenticate(request, username=request.POST[&#x27;username&#x27;], password = request.POST[&#x27;password&#x27;])
+
+        if user and user.is_staff:
+            login(request,user)
+            return redirect(&#x27;student_list&#x27;)
+        messages.error(request,&#x27;Invalid&#x27;)
+
+    return render(request,&#x27;login.html&#x27;)
+
+@login_required
+def teacher_logout(request):
+    logout(request)
+    return redirect(&#x27;login&#x27;)
+
+@login_required
+def student_list(request):
+    students = student.objects.all()
+    return render(request, &#x27;student_list.html&#x27;,{&#x27;students&#x27;:students})
+
+@login_required
+def add_student(request):
+    form = studentForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect(&#x27;student_list&#x27;)
+    return render(request,&#x27;student_form.html&#x27;,{&#x27;form&#x27;:form, &#x27;title&#x27;:&#x27;add student&#x27;})
+
+@login_required
+def edit_student(request, id):
+    student_obj = get_object_or_404(student, id=id)
+    form = studentForm(request.POST or None, instance=student_obj)
+    if form.is_valid():
+        form.save()
+        return redirect(&#x27;student_list&#x27;)
+    return render(request, &#x27;student_form.html&#x27;, {&#x27;form&#x27;: form, &#x27;title&#x27;:&#x27;edit student&#x27;})
+
+
+@login_required
+def delete_student(request, id):
+    student_obj = get_object_or_404(student, id=id)
+    if request.method == &#x27;POST&#x27;:
+        student_obj.delete()
+        return redirect(&#x27;student_list&#x27;)
+    return render(request, &#x27;student_confirm_delete.html&#x27;, {&#x27;student&#x27;: student})
+
+</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_forms">
+                    <div class="file-code-header">
+                        <span class="file-path">new / app1/forms.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-forms">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-forms" class="language-python">from django import forms
+from .models import student
+
+class studentForm(forms.ModelForm):
+    class Meta:
+        model = student
+
+        fields = [&#x27;rollno&#x27;,&#x27;name&#x27;,&#x27;email&#x27;,&#x27;course&#x27;]
+        </code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_urls">
+                    <div class="file-code-header">
+                        <span class="file-path">new / app1/urls.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-urls">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-urls" class="language-python">from django.urls import path
+from . import views
+
+urlpatterns = [
+
+    path(&#x27;&#x27;,views.teacher_login,name =&#x27;login&#x27;),
+    path(&#x27;logout/&#x27;,views.teacher_logout,name =&#x27;logout&#x27;),
+    path(&#x27;students/&#x27;,views.student_list,name =&#x27;student_list&#x27;),
+    
+    path(&#x27;add/&#x27;, views.add_student, name=&#x27;add_student&#x27;),
+
+    path(&#x27;edit/&lt;int:id&gt;/&#x27;, views.edit_student, name=&#x27;edit_student&#x27;),
+
+    path(&#x27;delete/&lt;int:id&gt;/&#x27;, views.delete_student, name=&#x27;delete_student&#x27;),
+]</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_admin">
+                    <div class="file-code-header">
+                        <span class="file-path">new / app1/admin.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-admin">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-admin" class="language-python">from django.contrib import admin
+from .models import student
+# Register your models here.
+admin.site.register(student)
+</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_apps">
+                    <div class="file-code-header">
+                        <span class="file-path">new / app1/apps.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-apps">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-apps" class="language-python">from django.apps import AppConfig
+
+
+class App1Config(AppConfig):
+    default_auto_field = &#x27;django.db.models.BigAutoField&#x27;
+    name = &#x27;app1&#x27;
+</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_base_html">
+                    <div class="file-code-header">
+                        <span class="file-path">new / template/base.html</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-base_html">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-base_html" class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;student management&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/style.css&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;nav class= &#x27;navbar&#x27;&gt;
+        &lt;h2&gt;Student MAnagemanet &lt;/h2&gt;
+        {%if user.is_authenticated %}
+            &lt;div&gt;
+                &lt;span&gt;welcome, {{ user.username}}&lt;/span&gt;
+                &lt;a herf =&quot;{% url &#x27;logout&#x27; %}&quot;&gt; logout&lt;/a&gt;
+            &lt;/div&gt;
+        {% endif %}
+    &lt;/nav&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                &lt;p&gt;{{ message }}&lt;/p&gt;
+
+            {% endfor %}
+
+        {% endif %}
+
+        {% block content %}
+
+        {% endblock %}
+
+    &lt;/div&gt;
+        &lt;script src=&quot;&quot; async defer&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_login_html">
+                    <div class="file-code-header">
+                        <span class="file-path">new / template/login.html</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-login_html">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-login_html" class="language-html">{% extends &#x27;base.html&#x27; %}
+
+{% block content %}
+
+&lt;div class=&quot;login-box&quot;&gt;
+
+    &lt;h2&gt;Teacher Login&lt;/h2&gt;
+
+    &lt;form method=&quot;POST&quot;&gt;
+
+        {% csrf_token %}
+
+        &lt;label&gt;Username&lt;/label&gt;
+
+        &lt;input type=&quot;text&quot; name=&quot;username&quot; required&gt;
+
+        &lt;label&gt;Password&lt;/label&gt;
+
+        &lt;input type=&quot;password&quot; name=&quot;password&quot; required&gt;
+
+        &lt;button type=&quot;submit&quot;&gt;Login&lt;/button&gt;
+
+    &lt;/form&gt;
+
+&lt;/div&gt;
+
+{% endblock %}</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_list_html">
+                    <div class="file-code-header">
+                        <span class="file-path">new / template/student_list.html</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-list_html">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-list_html" class="language-html">{% extends &#x27;base.html&#x27; %}
+
+{% block content %}
+
+&lt;h2&gt;Student List&lt;/h2&gt;
+
+&lt;a href=&quot;{% url &#x27;add_student&#x27; %}&quot; class=&quot;add-btn&quot;&gt;
+    Add Student
+&lt;/a&gt;
+
+&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+
+            &lt;th&gt;Roll No&lt;/th&gt;
+
+            &lt;th&gt;Name&lt;/th&gt;
+
+            &lt;th&gt;Email&lt;/th&gt;
+
+            &lt;th&gt;Course&lt;/th&gt;
+
+            &lt;th&gt;Actions&lt;/th&gt;
+
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+
+    &lt;tbody&gt;
+
+        {% for student in students %}
+
+        &lt;tr&gt;
+
+            &lt;td&gt;{{ student.rollno }}&lt;/td&gt;
+
+            &lt;td&gt;{{ student.name }}&lt;/td&gt;
+
+            &lt;td&gt;{{ student.email }}&lt;/td&gt;
+
+            &lt;td&gt;{{ student.course }}&lt;/td&gt;
+
+            &lt;td&gt;
+
+                &lt;a href=&quot;{% url &#x27;edit_student&#x27; student.id %}&quot;&gt;
+                    Edit
+                &lt;/a&gt;
+
+                |
+
+                &lt;a href=&quot;{% url &#x27;delete_student&#x27; student.id %}&quot;&gt;
+                    Delete
+                &lt;/a&gt;
+
+            &lt;/td&gt;
+
+        &lt;/tr&gt;
+
+        {% empty %}
+
+        &lt;tr&gt;
+            &lt;td colspan=&quot;5&quot;&gt;No students found&lt;/td&gt;
+        &lt;/tr&gt;
+
+        {% endfor %}
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;
+
+{% endblock %}</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_form_html">
+                    <div class="file-code-header">
+                        <span class="file-path">new / template/student_form.html</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-form_html">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-form_html" class="language-html">{% extends &#x27;base.html&#x27; %}
+
+{% block content %}
+
+&lt;div class=&quot;form-box&quot;&gt;
+
+    &lt;h2&gt;{{ title }}&lt;/h2&gt;
+
+    &lt;form method=&quot;POST&quot;&gt;
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        &lt;button type=&quot;submit&quot;&gt;Save&lt;/button&gt;
+
+        &lt;a href=&quot;{% url &#x27;student_list&#x27; %}&quot;&gt;
+            Cancel
+        &lt;/a&gt;
+
+    &lt;/form&gt;
+
+&lt;/div&gt;
+
+{% endblock %}</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_delete_html">
+                    <div class="file-code-header">
+                        <span class="file-path">new / template/student_confirm_delete.html</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-delete_html">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-delete_html" class="language-html">{% extends &#x27;base.html&#x27; %}
+
+{% block content %}
+
+&lt;h2&gt;Delete Student&lt;/h2&gt;
+
+&lt;p&gt;
+    Are you sure you want to delete
+    {{ student.name }}?
+&lt;/p&gt;
+
+&lt;form method=&quot;POST&quot;&gt;
+
+    {% csrf_token %}
+
+    &lt;button type=&quot;submit&quot;&gt;
+        Confirm Delete
+    &lt;/button&gt;
+
+    &lt;a href=&quot;{% url &#x27;student_list&#x27; %}&quot;&gt;
+        Cancel
+    &lt;/a&gt;
+
+&lt;/form&gt;
+
+{% endblock %}</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_css">
+                    <div class="file-code-header">
+                        <span class="file-path">new / static/css/style.css</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-css">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-css" class="language-css">* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+.navbar {
+    background: #222f3e;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.container {
+    padding: 30px;
+}
+
+.login-box,
+.form-box {
+    background: white;
+    padding: 25px;
+    max-width: 450px;
+    margin: 50px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px #ddd;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button,
+.add-btn {
+    background: #0984e3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    margin-top: 25px;
+    background: white;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 14px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #222f3e;
+    color: white;
+}
+
+td a {
+    text-decoration: none;
+    color: #0984e3;
+}</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_manage">
+                    <div class="file-code-header">
+                        <span class="file-path">new / manage.py</span>
+                        <button class="copy-snippet-btn" data-target="code-p2-manage">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy File</span>
+                        </button>
+                    </div>
+                    <pre><code id="code-p2-manage" class="language-python">#!/usr/bin/env python
+&quot;&quot;&quot;Django&#x27;s command-line utility for administrative tasks.&quot;&quot;&quot;
+import os
+import sys
+
+
+def main():
+    &quot;&quot;&quot;Run administrative tasks.&quot;&quot;&quot;
+    os.environ.setdefault(&#x27;DJANGO_SETTINGS_MODULE&#x27;, &#x27;config.settings&#x27;)
+    try:
+        from django.core.management import execute_from_command_line
+    except ImportError as exc:
+        raise ImportError(
+            &quot;Couldn&#x27;t import Django. Are you sure it&#x27;s installed and &quot;
+            &quot;available on your PYTHONPATH environment variable? Did you &quot;
+            &quot;forget to activate a virtual environment?&quot;
+        ) from exc
+    execute_from_command_line(sys.argv)
+
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre>
+                </div>
+
+                <div class="file-view" id="view-p2_db">
+                    <div class="file-code-header">
+                        <span class="file-path">new / db.sqlite3 (SQLite Database)</span>
+                    </div>
+                    <div class="db-inspector-notice">
+                        <h3>SQLite Database File: <code>new/db.sqlite3</code></h3>
+                        <p>This SQLite database stores the actual relational data for Project 2 (Student Portal) generated from <code>app1/migrations/0001_initial.py</code>.</p>
+                        <ul class="db-table-list">
+                            <li><code>app1_student</code>: Columns (<code>id</code>, <code>rollno [UNIQUE]</code>, <code>name</code>, <code>email [UNIQUE]</code>, <code>course</code>)</li>
+                            <li><code>auth_user</code>: Stores teacher staff credentials with password hash and <code>is_staff=1</code></li>
+                            <li><code>django_migrations</code>: Tracks applied migrations (e.g. <code>app1.0001_initial</code>)</li>
+                            <li><code>django_session</code>: Manages authenticated teacher browser sessions</li>
                         </ul>
                     </div>
                 </div>
